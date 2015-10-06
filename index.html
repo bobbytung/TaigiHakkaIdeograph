@@ -9,6 +9,7 @@
 		font-family: "hanamin";
 		src: url(hanamincom.ttf);		
 	}
+
 	
 	dl.char {
 		border: 1px black solid;
@@ -71,6 +72,7 @@ $(document).ready(function() {
 
   var renderPage = function(data, tabletop){
     // prepare handlebars template
+    
     var charitem_source ='<dl class="char"><dt>{{glyph}}</dt><dd>U+{{ucs}}</dd><dd>{{property}}</dd><dd>{{tw}}</dd></dl>';
     var charitem = Handlebars.compile(charitem_source);
     // prepare data
@@ -82,11 +84,12 @@ $(document).ready(function() {
       var glyph = ideo['字形'] || '';
       var ucs = ideo['Unicode'] || '';
       var property = ideo['屬性'] || '';
-      var tw = ideo['客臺'] || '';
+      var tw = ideo['客臺'] || ''
 
       var context = {glyph: glyph, ucs: ucs, property: property, tw: tw};
       var $charitem_element = $(charitem(context));
-          $('[data-series="'+ tw +'"]').append($charitem_element);
+              
+      $('[data-series="'+ tw +'"]').append($charitem_element);
     });
 };
    Tabletop.init({
