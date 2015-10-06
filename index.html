@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="zh-TW" lang="zh-TW">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+	
+	@font-face {
+		font-family: "hanamin";
+		src: url(HanaMinB.ttf);
+		src: url(HanaMinA.ttf);
+		
+	}
+	
+	dl.char {
+		border: 1px black solid;
+		width: 18%;
+		text-align: center;
+		display: block;
+		float: left;
+		margin: 0;
+		padding: 0;
+	}
+	
+	dt {
+		font-size: 32pt;
+		font-family: "hanamin","HanaMinB","HanaMinA",serif;
+	}
+	
+	dd {
+
+		top: 0;
+		margin: 0;
+		padding: 0;
+	}
+	
+	h2 {
+		clear: both;
+	}
+	
+	@media print {
+		dl {
+			page-break-inside: avoid;
+		}
+	}
+	    
+	</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+<body>
+ <h2>臺語用字</h2>
+ <div data-series="臺">
+ </div>
+<h2>客臺語用字</h2>
+ <div data-series="客臺">
+ </div>	 
+ <h2>客語用字</h2>
+ <div data-series="臺">
+ </div>
+ <h2>次常用字</h2>
+ <div data-series="次常用">
+ </div>
+ 
+ 
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/handlebars-v3.0.3.js"></script>
+<script src="js/tabletop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+
+
+
+
+  var renderPage = function(data, tabletop){
+    // prepare handlebars template
+    var charitem_source ='<dl class="char"><dt>{{glyph}}</dt><dd>U+{{ucs}}</dd><dd>{{property}}</dd><dd>{{tw}}</dd></dl>';
+    var charitem = Handlebars.compile(charitem_source);
+    // prepare data
+    var charlist = tabletop.sheets('ideochart').all();
+
+    // combine template and data
+    
+    $.each(charlist, function(char_index, ideo){
+      var glyph = ideo['字形'] || '';
+      var ucs = ideo['Unicode'] || '';
+      var property = ideo['屬性'] || '';
+      var tw = ideo['客臺'] || '';
+
+      var context = {glyph: glyph, ucs: ucs, property: property, tw: tw};
+      var $charitem_element = $(charitem(context));
+          $('[data-series="'+ tw +'"]').append($charitem_element);
+    });
+};
+   Tabletop.init({
+    key: '18CUbZ7tsvZ4QbUj3xcfYi9EGqsft4T37WtUMX9v2STQ',
+    callback: renderPage,
+    simpleSheet: true
+  });  
+
+})
+</script>
+</body>
+</html>
