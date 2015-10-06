@@ -10,6 +10,9 @@
 		src: url(hanamincom.ttf);		
 	}
 
+	img {
+		width: 32pt;
+	}
 	
 	dl.char {
 		border: 1px black solid;
@@ -73,8 +76,13 @@ $(document).ready(function() {
   var renderPage = function(data, tabletop){
     // prepare handlebars template
     
-    var charitem_source ='<dl class="char"><dt>{{glyph}}</dt><dd>U+{{ucs}}</dd><dd>{{property}}</dd><dd>{{tw}}</dd></dl>';
+    var charitem_source ='<dl class="char"><dt>{{glyph}}</dt>';
+    var charitem_source2 ='<img src="img/{{charimage}}"/>';
+    var charitem_source_end = '<dd>U+{{ucs}}</dd><dd>{{property}}</dd><dd>{{tw}}</dd></dl>';
     var charitem = Handlebars.compile(charitem_source);
+    var charitem2 = Handlebars.compile(charitem_source2);
+    var charitem_end = Handlebars.compile(charitem_source_end);
+
     // prepare data
     var charlist = tabletop.sheets('ideochart').all();
 
@@ -84,10 +92,20 @@ $(document).ready(function() {
       var glyph = ideo['字形'] || '';
       var ucs = ideo['Unicode'] || '';
       var property = ideo['屬性'] || '';
-      var tw = ideo['客臺'] || ''
+      var tw = ideo['客臺'] || '';
+      var charimage = ideo['image'] || ''
 
-      var context = {glyph: glyph, ucs: ucs, property: property, tw: tw};
+	 
+      var context = {glyph: glyph, ucs: ucs, property: property, tw: tw, charimage: charimage};
       var $charitem_element = $(charitem(context));
+      if(charimage.length > 0){
+	      var $ideoimage = $(charitem2(context));
+	      $charitem_element.append($ideoimage);
+      }
+      if(tw.length > 0){
+	      var $ideo_end = $(charitem_end(context));
+	      $charitem_element.append($ideo_end);
+      }      
               
       $('[data-series="'+ tw +'"]').append($charitem_element);
     });
