@@ -12,6 +12,7 @@
 
 	img {
 		width: 32pt;
+		height: 32pt;
 	}
 	
 	dl.char {
@@ -40,6 +41,8 @@
 		clear: both;
 	}
 	
+
+	
 	@media print {
 		dl {
 			page-break-inside: avoid;
@@ -50,17 +53,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 <body>
- <h2>臺語用字</h2>
+ <h2>臺語常用漢字</h2>
  <div data-series="臺">
  </div>
-<h2>客臺語用字</h2>
+<h2>客臺語共同常用漢字</h2>
  <div data-series="客臺">
  </div>	 
- <h2>客語用字</h2>
+ <h2>客語常用漢字</h2>
  <div data-series="臺">
  </div>
- <h2>次常用字</h2>
+ <h2>客臺語共同次常用字</h2>
  <div data-series="次常用">
+ </div>
+ 
+ 
+ <div>
+
+	 <h2>資料來源</h2>
+	 <ul>
+		 <li><a href="https://docs.google.com/spreadsheets/d/18CUbZ7tsvZ4QbUj3xcfYi9EGqsft4T37WtUMX9v2STQ/pubhtml">臺語客語特殊字表</a>by 烏衣行, Liz Lin, Ka-phing Loh</li>
+		 <li>自造字圖檔擷取於烏衣行製作的<a href="http://wesingkasu.blogspot.tw/2012/01/blog-post_1223.html">臺灣宋體、楷體</a></li>
+		 <li>Unicode ext-B後字型採用<a href="http://fonts.jp/hanazono/">花園明朝體</a>擷取重組製作</li>
+	 </ul>
+		 <h2>說明</h2>
+		 <ul>
+			 <li>自造字是否編入Unicode中，需進一步檢證，使用私用區編碼主要為臺灣宋體、楷體內的編碼</li>
+			 <li>本頁使用<a href="http://handlebarsjs.com">Handlebar.js</a>以及<a href="http://www.javascriptoo.com/tabletop">TableTop.js</a>製作</li>
+			 
+		 </ul>
+	 </ul>
  </div>
  
  
