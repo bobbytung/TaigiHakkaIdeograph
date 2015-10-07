@@ -6,15 +6,17 @@
     <title>臺客語漢字表</title>
     <style>
 	
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	
 	@font-face {
 		font-family: "hanamin";
 		src: url(hanamincom.ttf);		
 	}
 
-	body {
-		margin: 0;
-		padding: 0;
-	}
+	
 	
 	img {
 		width: 32pt;
@@ -149,6 +151,9 @@ input[type=checkbox]:checked ~ #menu{
 	@media print {
 		dl {
 			page-break-inside: avoid;
+		}
+		label,input,ul {
+			display: none;
 		}
 	}
 	    
