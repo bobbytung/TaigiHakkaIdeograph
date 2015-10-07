@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="zh-TW" lang="zh-TW">
   <head>
     <meta charset="utf-8" />
+    <title>臺客語漢字表</title>
     <style>
 	
 	@font-face {
@@ -10,6 +11,11 @@
 		src: url(hanamincom.ttf);		
 	}
 
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	
 	img {
 		width: 32pt;
 		height: 32pt;
@@ -42,9 +48,103 @@
 	
 	h2 {
 		clear: both;
+		padding-top: 1em;
 	}
 	
+	ul {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	position: absolute;
+	width: 100%;
+	color: white;
+	height: 50px;
+}
+	
+	/*Style for menu links*/
+li a {
+	display:block;
+	width: 19vw;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	font-family: sans-serif;
+	color: #000;
+	background: #fff;
+	text-decoration: none;
+	border-bottom:  none;
+	padding: 0;
+	margin: 0;
 
+}
+
+
+
+/*Hover state for top level links*/
+/*Create a horizontal list with spacing*/
+li {
+	display:inline-block;
+	float: left;
+	margin-right: 0;
+	margin-top: 0;
+}
+
+li:hover a {
+	background: #000;
+	color: #fff;
+}
+
+.top50 {
+	margin-top: 50px;
+}
+
+.show-menu {
+	font-family: sans-serif;
+	text-decoration: none;
+	color: #000;
+	background: #fff;
+	text-align: center;
+	padding: 10px 0;
+	display: none;
+	font-size: 14px;
+}
+
+/*Hide checkbox*/
+input[type=checkbox]{
+    display: none;
+}
+
+/*Show menu when invisible checkbox is checked*/
+input[type=checkbox]:checked ~ #menu{
+    display: block;
+}
+
+@media screen and (max-width : 768px) {
+
+
+	h2 {
+		padding-top: 3em;
+	}
+/*Make dropdown links appear inline*/
+	ul {
+		position: static;
+		display: none;
+	}
+	/*Create vertical spacing*/
+	li {
+		border-bottom: 1px dashed rgba(0, 0, 0, 0.5);
+	}
+	/*Make all menu links full width*/
+	ul li, li a {
+		width: 100%;
+	}
+	/*Display 'show menu' link*/
+	.show-menu {
+		display:block;
+
+	}
+
+}
 	
 	@media print {
 		dl {
@@ -56,35 +156,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 <body>
- <h2>臺語常用漢字</h2>
+	<label for="show-menu" class="show-menu">臺客語漢字表</label>
+	<input type="checkbox" id="show-menu" role="button">
+<ul id="menu">
+		<li><a href=#p1>臺語常用漢字</a></li>
+		<li><a href=#p2>客臺語共同常用漢字</a></li>
+		<li><a href=#p3>客語常用漢字</a></li>
+		<li><a href=#p4>客臺語共同次常用字</a></li>
+		<li><a href=#p5>資料來源與說明</a></li>
+	</ul>
+
+ <h2 id="p1">臺語常用漢字</h2>
  <div data-series="臺">
  </div>
-<h2>客臺語共同常用漢字</h2>
+<h2 id="p2">客臺語共同常用漢字</h2>
  <div data-series="客臺">
  </div>	 
- <h2>客語常用漢字</h2>
+ <h2 id="p3">客語常用漢字</h2>
  <div data-series="臺">
  </div>
- <h2>客臺語共同次常用字</h2>
+ <h2 id="p4">客臺語共同次常用字</h2>
  <div data-series="次常用">
  </div>
  
  
  <div>
 
-	 <h2>資料來源</h2>
-	 <ul>
-		 <li><a href="https://docs.google.com/spreadsheets/d/18CUbZ7tsvZ4QbUj3xcfYi9EGqsft4T37WtUMX9v2STQ/pubhtml">臺語客語特殊字表</a>by 烏衣行, Liz Lin, Ka-phing Loh。</li>
-		 <li>自造字圖檔擷取於烏衣行製作的<a href="http://wesingkasu.blogspot.tw/2012/01/blog-post_1223.html">臺灣宋體、楷體</a>。</li>
-		 <li>Unicode ext-B後字型採用<a href="http://fonts.jp/hanazono/">花園明朝體</a>擷取重組製作。</li>
-	 </ul>
+	 <h2 id="p5">資料來源</h2>
+	 <p><a href="https://docs.google.com/spreadsheets/d/18CUbZ7tsvZ4QbUj3xcfYi9EGqsft4T37WtUMX9v2STQ/pubhtml">臺語客語特殊字表</a>by 烏衣行, Liz Lin, Ka-phing Loh。</p>
+	 <p>自造字圖檔擷取於烏衣行製作的<a href="http://wesingkasu.blogspot.tw/2012/01/blog-post_1223.html">臺灣宋體、楷體</a>。</p>
+	 <p>Unicode ext-B後字型採用<a href="http://fonts.jp/hanazono/">花園明朝體</a>擷取重組製作。</p>
 		 <h2>說明</h2>
-		 <ul>
-			 <li>自造字是否編入Unicode中，需進一步檢證，使用私用區編碼主要為臺灣宋體、楷體內的編碼。</li>
-			 <li>本頁使用<a href="http://handlebarsjs.com">Handlebar.js</a>以及<a href="http://www.javascriptoo.com/tabletop">TableTop.js</a>製作。</li>
-			 <li>你可以另外下載<a href="https://github.com/bobbytung/TaigiHakkaIdeograph/blob/master/台客語用漢字.pdf">PDF檔案</a>，也可以直接列印本網頁。</a>
-		 </ul>
-	 </ul>
+			 <p>自造字是否編入Unicode中，需進一步檢證，使用私用區編碼主要為臺灣宋體、楷體內的編碼。</p>
+			 <p>本頁使用<a href="http://handlebarsjs.com">Handlebar.js</a>以及<a href="http://www.javascriptoo.com/tabletop">TableTop.js</a>製作。</p>
+			 <p>你可以另外下載<a href="https://github.com/bobbytung/TaigiHakkaIdeograph/blob/master/台客語用漢字.pdf">PDF檔案</a>，也可以直接列印本網頁。</a></p>
  </div>
  
  
